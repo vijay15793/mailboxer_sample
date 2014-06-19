@@ -1,6 +1,7 @@
 Robomate::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-
+  #including foundation front end framework
+  config.assets.precompile += %w( vendor/modernizr.js )
   # Code is not reloaded between requests
   config.cache_classes = true
 
