@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-#gem 'sqlite3', group: :development
+gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'sass-rails',   '~> 3.2.3'
 
@@ -19,7 +19,11 @@ gem 'devise'
 gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
-
+gem "select2-rails"
+gem 'rails-ajax'
+group :development do
+  gem 'rails_layout'
+end
 
 group :development do
   gem 'better_errors'

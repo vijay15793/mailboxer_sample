@@ -5,15 +5,17 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string  :email,              null: false, default: ""
       t.string  :encrypted_password, null: false, default: ""
       t.string  :name,               null: false, default: ""
-      t.string  :address_line_1,     null: false, :default => ""
+      t.string  :address_line_1
       t.string  :address_line_2
-      t.string  :city,               null: false, :default => ""
+      t.string  :city
       t.string  :state
       t.integer :pin_code
-      t.integer :contact_no,         null: false, :default => ""
+      t.integer :contact_no,         null: false, default: ""
       t.integer :alt_contact_no
       t.integer :campus_id
       t.string  :ref_email
+      t.string  :role,               null: false, default: "learner"
+      
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

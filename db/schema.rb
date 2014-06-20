@@ -11,25 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140619170401) do
+ActiveRecord::Schema.define(:version => 20140619141506) do
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "name",                   :default => "", :null => false
-    t.string   "address_line_1",         :default => "", :null => false
+    t.string   "email",                  :default => "",        :null => false
+    t.string   "encrypted_password",     :default => "",        :null => false
+    t.string   "name",                   :default => "",        :null => false
+    t.string   "address_line_1"
     t.string   "address_line_2"
-    t.string   "city",                   :default => "", :null => false
+    t.string   "city"
     t.string   "state"
     t.integer  "pin_code"
-    t.integer  "contact_no",             :default => 0,  :null => false
+    t.integer  "contact_no",             :default => 0,         :null => false
     t.integer  "alt_contact_no"
     t.integer  "campus_id"
     t.string   "ref_email"
+    t.string   "role",                   :default => "learner", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.integer  "sign_in_count",          :default => 0,         :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -38,12 +39,11 @@ ActiveRecord::Schema.define(:version => 20140619170401) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        :default => 0,  :null => false
+    t.integer  "failed_attempts",        :default => 0,         :null => false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "role"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

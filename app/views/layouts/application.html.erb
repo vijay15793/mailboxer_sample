@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= content_for?(:title) ? yield(:title) : "Robomate " %></title>
-	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Robotics|workshop|Robomate|Technologies|training" %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <%= yield(:head) %>
-  </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Robomate" %></title>
+    
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "India top & best company to deliver workshop(s) on Ethical Hacking, Android, Robotics, 3D animation and Summer Training on Embedded Systems & Robotics and Cyber Security for engineering students in delhi, jaipur, chennai, Hyderabad, chandigarh. Sponsor techfest/campus fest of India and organise workshop at IIT Bombay, IIT Roorkee, NIT Warangal, LPU" %>">
+    <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : "ethical hacking workshop, Robotics workshop training for school student(s), Workshop in engineering college(s), android workshop, ethical hacking summer training 2012, free workshop seminar in delhi ncr, tech fest 2012, best company for workshop, Top workshop company in delhi, Provide Sponsor for techfest campus fest" %>">
 
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
   <body>
-	<%= render 'layouts/navigation' %>
-	<%= render 'layouts/messages' %>
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+       <%= render 'layouts/messages' %>
+       <div id="Content">
+   		   <%= yield %>
+  	   </div>
+    </main>
   </body>
 </html>
