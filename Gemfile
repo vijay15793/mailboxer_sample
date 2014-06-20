@@ -20,7 +20,7 @@ gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
 gem "select2-rails"
-gem 'rails-ajax'
+
 group :development do
   gem 'rails_layout'
 end

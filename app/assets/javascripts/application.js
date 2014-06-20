@@ -13,12 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-
-// RailsAjax
-//= require jquery.history
-//= require jquery.rails-ajax
-//= require RailsAjax-Config
-
 //= require_tree .
 $(function() {
   $(document).foundation();
