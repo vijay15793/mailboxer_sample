@@ -1,0 +1,21 @@
+<%=link_to 'Inbox',:action=>'inbox'%>&nbsp;<%=link_to 'Sentbox',:action=>'sentbox'%>&nbsp;<%=link_to 'Trash',:action=>'trashed'%>
+
+<h4>Inbox:</h4>
+
+<%= paginate @inbox %>
+
+<%@inbox.each do |msg|%>
+<%@msg = Mailboxer::Message.find(msg.id)%>
+
+<h5><%='Subject: '+"#{@msg.conversation.subject}" if @msg.conversation%></h5>
+
+<%=link_to @msg.sender.name,user_path(@msg.sender)%>:&nbsp;
+
+
+<%=@msg.body%>
+ &nbsp;<%=distance_of_time_in_words_to_now(@msg.created_at, include_seconds_or_options = {}) %> ago
+
+<%current_user.mark_as_read(@msg)%>
+<%=button_to 'send to trash',:action=>'trash',:controller=> 'messages',:id=>msg.id %>
+<hr />
+<%end%>

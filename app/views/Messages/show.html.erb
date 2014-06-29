@@ -1,0 +1,45 @@
+<%=link_to 'Inbox',:action=>'inbox'%>&nbsp;<%=link_to 'Sentbox',:action=>'sentbox'%>&nbsp;<%=link_to 'Trash',:action=>'trashed'%>
+<%=button_to "Start new Conversation",:controller=> 'messages',:action=>'new'%>
+<h4>Conversations:&nbsp;&nbsp;&nbsp;</h4>
+<hr />
+<div>
+	<%=paginate @conversations%>
+<%@conversations.each do |conversation|%>
+
+<% if not conversation.is_completely_trashed?(current_user)%>   
+         
+<h5><%='Subject: '+"#{conversation.subject}" if conversation.subject%></h5>
+<%@msg=Mailboxer::Message.last(:conditions => {:conversation_id=>conversation.id})%>
+<%if conversation.participants.count > 2%>
+
+<h5>Started By:&nbsp;<%=conversation.originator.name%></h5>
+
+<%end%>
+  <b> User:</b>
+  
+	<%conversation.participants.each do |receipts| %>
+	<%=link_to receipts.name,user_path(receipts) if receipts!=current_user %>
+	<%end%>
+	
+	<br /><%=link_to @msg.sender.name,user_path(@msg.sender)%>
+   
+
+           <%=@msg.body%>
+           &nbsp;<%=distance_of_time_in_words_to_now(@msg.created_at, include_seconds_or_options = {}) %> ago
+          <%current_user.mark_as_read(@msg)%>
+
+
+<%= button_to "Open Conversation"+'('+"#{conversation.count_messages}"+')', :action=>'all_message',:controller=> 'messages',:id=>conversation.id %>
+<%@conversation=conversation%>
+<%=render 'reply_form'%>
+
+<hr />
+<%end%>
+<%end%> 
+</div>
+<br />
+
+      
+
+
+

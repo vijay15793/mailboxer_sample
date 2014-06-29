@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Robomate
+module MailboxerSample
   class Application < Rails::Application
     
     config.sass.load_paths += [

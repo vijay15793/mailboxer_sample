@@ -1,4 +1,4 @@
-Robomate::Application.routes.draw do
+MailboxerSample::Application.routes.draw do
   devise_for :users
   resources :users
   get "welcome/index"
@@ -53,13 +53,15 @@ Robomate::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   authenticated :user do
-    root :to => 'welcome#index'
+    root :to => 'users#index'
   end
-    root :to => 'welcome#index'
+  devise_scope :user do
+    root :to => 'devise/sessions#new'
+  end
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+   match ':controller(/:action(/:id))(.:format)'
 end

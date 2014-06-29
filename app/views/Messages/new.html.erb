@@ -1,0 +1,54 @@
+<script>$(document).ready(function()
+{
+
+    jQuery.noConflict();
+    $("#user_id").select2({
+        minimumInputLength: 3
+    });
+
+
+});</script>
+
+<%=form_for :msg,:url=>{:controller => 'messages',:action => 'send_msg'} do |f|%>
+
+    <h5><%= f.label :user_id ,"Message To:"%></h5>
+
+    <%if @user%>
+
+        <%=@user.name%><br />
+        <%=hidden_field_tag 'user_id[]',@user.id%>
+
+        <select multiple="true" id="user_id" style = "width:220px" placeholder = "Add More User"  name = "user_id[]">
+          <%@users=User.all%>
+
+          <%@users.each do |user|%>
+              <option value=<%=user.id%>><%=user.name%></option>
+          <%end%>
+        </select>
+
+    <%else%>
+
+        <select multiple="true" id="user_id" style = "width:220px" placeholder = "Add More User"  name = "user_id[]">
+          <%@users=User.all%>
+
+          <%@users.each do |user|%>
+              <option value=<%=user.id%>><%=user.name%></option>
+          <%end%>
+        </select>
+
+
+    <%end%>
+
+         <h5><%= f.label :subject ,"Subject:"%></h5>
+      <%=f.text_field :subject%>
+      
+       <h5><%= f.label :body ,"Message:"%></h5>
+      <%=f.text_area :body, :style=>"width:320;height:80px"%>
+    
+    <div class="submit">
+     <%=f.submit "Send Message"%>
+    </div>
+  
+
+<%end%>
+         

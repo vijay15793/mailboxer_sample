@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-Robomate::Application.config.session_store :cookie_store, key: '_robomate_session'
+MailboxerSample::Application.config.session_store :cookie_store, key: '_mailboxer_sample_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

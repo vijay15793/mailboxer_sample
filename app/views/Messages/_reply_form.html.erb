@@ -1,0 +1,15 @@
+
+
+<%=form_for :reply_msg,:url=>{:controller => 'messages',:action => 'replied',:id=>@conversation.id} do |f|%>
+  
+       
+      
+       <h5><%= f.label :body ,"Reply:"%></h5>
+      <%=f.text_area :body, :style=>"width:320;height:30px"%>
+    
+    <div class="submit">
+     <%=f.submit "Reply"%>
+    </div>
+  
+
+<%end%>

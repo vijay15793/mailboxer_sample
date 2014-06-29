@@ -1,0 +1,31 @@
+<%=link_to 'Inbox',:action=>'inbox'%>&nbsp;<%=link_to 'Sentbox',:action=>'sentbox'%>&nbsp;<%=link_to 'Trash',:action=>'trashed'%>
+<% if not @conversation.is_completely_trashed?(current_user)%>  
+<h4>Conversation: <%=button_to 'send to trash',:action=>'trash',:controller=> 'messages',:id=>@conversation.id %></h4>
+<hr />
+<div>
+
+
+             
+<h5><%='Subject: '+"#{@conversation.subject}" if @conversation.subject%></h5> 
+<%@msg=Mailboxer::Message.find(:all,:conditions => {:conversation_id=>@conversation.id})%>
+
+
+<h5>Started By:&nbsp;<%=@conversation.originator.name%></h5>
+<%@msg.each do |msg|%>
+
+    
+ <%=link_to msg.sender.name,user_path(msg.sender)%>:
+
+<%=msg.body%> &nbsp;<%=distance_of_time_in_words_to_now(msg.created_at, include_seconds_or_options = {}) %> ago  
+
+
+<br />
+
+<%current_user.mark_as_read(msg)%>
+<hr />
+<%end%>
+</div>
+
+<%=render 'reply_form'%>
+<%end%>
+<br />

@@ -5,9 +5,11 @@ gem 'rails', '3.2.13'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'sass-rails',   '~> 3.2.3'
-
+gem 'mailboxer'
+gem 'kaminari'
 group :assets do
-  
+
+  gem 'jquery-ui-rails', '~>3.0'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end

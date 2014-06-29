@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Robomate::Application.load_tasks
+MailboxerSample::Application.load_tasks
